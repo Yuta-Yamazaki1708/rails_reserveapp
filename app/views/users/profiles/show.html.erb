@@ -2,5 +2,9 @@
 
 <%= link_to "アカウント", user_account_path %>
 <h3>プロフィール</h3>
-<%= current_user.name %>
+<p><%= current_user.name %></p>
+<p><%= current_user.introduction %></p>
+<% if current_user.avatar.attached? %>
+  <%= image_tag current_user.avatar.variant(resize: '100x100') %>
+<% end %>
 <%= link_to "編集", user_profile_edit_path %>

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:new, :create]
-  before_action :configure_account_update_params, only: [:update]
+  #before_action :configure_sign_up_params, only: [:new, :create]
+  #before_action :configure_account_update_params, only: [:update]
+  after_action :default_avatar, if: :devise_controller?, only: [:new, :create]
+  before_action :practice
   # GET /resource/sign_up
   # def new
   #   super
@@ -37,18 +39,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  private
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-  end
+  #def configure_sign_up_params
+  #  devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar])
+  #end
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+  #def configure_account_update_params
+  #  devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+  #end
+
+  def default_avatar
+    if !current_user.avatar.attached?
+      current_user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_avatar.png')), filename: 'default-avatar.png', content_type: 'image/png')
+    end
   end
 
+  def practice
+    @p = "before action"
+  end
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)

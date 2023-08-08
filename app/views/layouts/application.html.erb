@@ -15,10 +15,10 @@
       <%= link_to "home", root_path %>
       <% if user_signed_in? %>
         <ul class="drop-down-menu">
-          <li id="menu"><%= current_user.name%></li>
+          <li id="menu"><%= image_tag current_user.avatar.variant(resize: '20x20') %><%= current_user.name%></li>
             <ul id="slide-menu">
-               <li><%= link_to "登録情報編集", user_account_path %></li>
-               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to "登録情報編集", user_account_path %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             </ul>
         </ul>
       <% else %>

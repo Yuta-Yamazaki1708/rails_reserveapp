@@ -1,4 +1,6 @@
 class Users::ProfilesController < ActionController::Base
+  layout 'application'
+
     def show
       current_user
     end
@@ -20,6 +22,6 @@ class Users::ProfilesController < ActionController::Base
 
     private
     def profile_params
-      params.require(:user).permit(:name, :introduction)
+      params.require(:user).permit(:name, :introduction, :avatar)
     end
 end
