@@ -11,3 +11,15 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require('jquery')
+
+$(document).on('click',function(e) {
+    if(!$(e.target).closest('#menu').length) {
+      $("#slide-menu").slideup(150); 
+       
+    } else {
+      $("#slide-menu").slideToggle(150); 
+    }
+ });
+ 

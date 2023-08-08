@@ -1,0 +1,19 @@
+<h3>プロフィール編集</h3>
+
+<%= render "users/shared/flash_now_message", message: flash[:failure] %>
+
+<%= form_with model: current_user, url: user_profile_path, method: "patch" do |f| %>
+  <table>
+     <tr>
+       <th><%= f.label :name ,"名前" %></th>
+       <td><%= f.text_field :name %></td>
+     </tr>
+     <tr>
+       <th><%= f.label :introduction ,"一言紹介" %></th>
+       <td><%= f.text_area :introduction %></td>
+     </tr>
+   </table>
+ 
+   <%= f.submit "登録完了する"%></li>
+    
+ <% end %>
