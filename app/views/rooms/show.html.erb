@@ -1,0 +1,21 @@
+<h3>施設詳細</h3>
+<% if @room.user_id == current_user.id %>
+  <%= link_to "編集", edit_room_path(@room) %>
+<% end %>
+<table>
+  <tr>
+    <th>施設名</th>
+    <th>画像</th>
+    <th>住所</th>
+    <th>紹介</th>
+    <th>価格</th>
+  </tr>
+  <tr>
+    <td><%= @room.name %></td>
+    <td><%= image_tag @room.image.variant(resize: "500x500") %></td>
+    <td><%= @room.address %></td>
+    <td><%= @room.introduction %></td>
+    <td><%= @room.price %></td>
+  </tr>
+</table>
+<p>予約するリンクここに作るauthenticate_user!</p>

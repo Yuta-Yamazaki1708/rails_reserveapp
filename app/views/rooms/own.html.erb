@@ -1,0 +1,30 @@
+<h3>own</h3>
+<table>
+  <thead>
+    <tr>
+      <th>施設名</th>
+      <th>画像</th>
+      <th>住所</th>
+      <th>紹介</th>
+      <th>価格</th>
+      <th>user_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= link_to "#{room.name}", room_path(room) %></td>
+        <% if room.image.attached? %>
+        <td><%= image_tag room.image.variant(resize: "100x100") %></td>
+        <% end %>
+        <td><%= room.address %></td>
+        <td><%= room.introduction %></td>
+        <td><%= room.price %></td>
+        <td><%= room.user_id %></td>
+        <td>︙</td>
+        <td><%= link_to "編集", edit_room_path(room) %></td>
+        <td><%= link_to "削除", room_path(room), method: :delete, data: {confirm: "削除確認"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
