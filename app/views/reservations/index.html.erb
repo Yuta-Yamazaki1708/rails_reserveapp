@@ -1,0 +1,31 @@
+<h1>予約一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介</th>
+      <th>合計料金</th>
+      <th>チェックイン</th>
+      <th>チェックアウト</th>
+      <th>予約確定日時</th>
+    </tr>
+  </thead>
+  <% @reservations.each do |reservation| %>
+    <% sum_price = reservation.room.price * reservation.num_people * (reservation.end_at - reservation.start_at).to_i %>
+    <tbody>
+      <tr>
+        <td><%= image_tag reservation.room.image.variant(resize:'100x100') %></td>
+        <td><%= reservation.room.name %></td>
+        <td><%= reservation.room.introduction %></td>
+        <td><%= sum_price %></td>
+        <td><%= reservation.start_at %></td>
+        <td><%= reservation.end_at %></td>
+        <td><%= reservation.updated_at %></td>
+        <td><%= link_to "再予約", edit_reservation_path(reservation) %></td>
+        <td><%= link_to "削除", reservation_path(reservation), method: :delete, data:{confirm: "本当に削除しますか？"} %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

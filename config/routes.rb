@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   patch 'user/profile', to: 'users/profiles#update'
   get '/rooms/own', to: 'rooms#own'
   resources :rooms
+  post 'reservations/confirm', to: 'reservations#confirm'
+  resources :reservations
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
