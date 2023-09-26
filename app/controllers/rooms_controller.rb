@@ -10,11 +10,12 @@ class RoomsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @room = Room.new(room_params)
     if @room.save
       redirect_to rooms_path
     else
-      render new_room_path
+      render "rooms/new"
     end
   end
 
@@ -30,6 +31,7 @@ class RoomsController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @room = Room.find(params[:id])
   end
 
@@ -38,7 +40,7 @@ class RoomsController < ApplicationController
     if @room.update(room_params)
       redirect_to rooms_own_path
     else
-      render edit_room_path(@room)
+      render "rooms/edit"
     end
   end
 

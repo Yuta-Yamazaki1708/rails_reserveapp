@@ -19,6 +19,14 @@
   </tr>
 </table>
 
+<% if @reservation.errors.any? %>
+  <% @reservation.errors.full_messages.each do |message| %>
+    <ul>
+      <li><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>
+
 <%= form_with model: @reservation, url: reservations_confirm_path, method: :post do |f| %>
 <table>
   <tr>

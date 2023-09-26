@@ -4,4 +4,8 @@ class Room < ApplicationRecord
     belongs_to :user
     has_one_attached :image
     
+
+    validates :name, presence: true
+    validates :introduction, length: {maximum: 50}
+    validates :price, presence: true, numericality: true
 end

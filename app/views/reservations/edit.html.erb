@@ -1,5 +1,13 @@
 <h3>再予約する</h3>
 
+<% if @reservation.errors.any? %>
+  <% @reservation.errors.full_messages.each do |message| %>
+    <ul>
+      <li><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>
+
 <div>
   <%= image_tag @reservation.room.image.variant(resize:'200x200') %>
   <p><%= @reservation.room.name %></p>

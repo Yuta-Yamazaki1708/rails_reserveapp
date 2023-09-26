@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      room: 宿泊施設
+      reservation: 予約
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+        introduction: 自己紹介
+      room:
+        name: 施設名
+        introduction: 施設紹介
+        price: 価格
+        address: 住所
+      reservation:
+        start_at: 開始日
+        end_at: 終了日
+        num_people: 人数
