@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/user/profile/edit', to: 'users/profiles#edit'
   patch 'user/profile', to: 'users/profiles#update'
   get '/rooms/own', to: 'rooms#own'
+  get '/rooms/search', to: 'rooms#search'
+  get '/rooms/search_keywords', to: 'rooms#search_keywords'
   resources :rooms
   post 'reservations/confirm', to: 'reservations#confirm'
   resources :reservations

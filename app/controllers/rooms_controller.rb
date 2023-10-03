@@ -50,6 +50,14 @@ class RoomsController < ApplicationController
     redirect_to rooms_own_path
   end
 
+  def search
+    @rooms = Room.where('address LIKE ?', "%#{params[:address]}%")
+  end
+
+  def search_keywords
+    @rooms = Room.where('address LIKE ? OR introduction LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+  end
+
   private
 
   def room_params

@@ -1,3 +1,24 @@
-<h1>Home#index</h1>
+<h1>宿泊施設予約サイト</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+
+<%= form_with url: "rooms/search", method: :get do |f| %>
+  <%= f.label "エリアを検索" %>
+  <%= f.text_field :address %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<%= form_with url: "rooms/search_keywords", method: :get do |f| %>
+  <%= f.label "キーワードで検索" %>
+  <%= f.text_field :keyword %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<div>
+  <h3>おすすめエリア</h3>
+  <%= link_to "東京", "/rooms/search?address=東京&commit=検索" %>
+  <%= link_to "大阪", "/rooms/search?address=大阪&commit=検索" %>
+  <%= link_to "京都", "/rooms/search?address=京都&commit=検索" %>
+  <%= link_to "北海道", "/rooms/search?address=北海道&commit=検索" %>
+</div>
+
 <%= link_to "施設一覧", rooms_path %>
