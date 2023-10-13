@@ -1,0 +1,54 @@
+<% if reservation.errors.any? %>
+  <% reservation.errors.full_messages.each do |message| %>
+    <ul>
+      <li><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+  <div class="row justify-content-between">
+    <%= link_to "戻る", :back, class: "col-1" %>
+    <% if user_signed_in? %>
+      <% if room.user_id == current_user.id %>
+        <%= link_to "編集", edit_room_path(room), class: "btn btn-primary col-1" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="reservation-content row justify-content-between gx-4 mt-4 mb-4">
+    <%= image_tag room.image.variant(resize: "500x500"), class: "reservation-image col" %>
+    <div class="reservation-information col row justify-content-between">
+      <p class="col text-start"><%= room.name %></p>
+      <p class="col text-end">￥<%= room.price %>〜</p>
+      <p><%= room.address %></p>
+      <p><%= room.introduction %></p>
+      <div class="reservation-form">
+        <%= form_with model: reservation, url: reservations_confirm_path, method: :post do |f| %>
+          <div class="row justify-content-between text-center gy-4">
+            <div class="col-sm-12 col-md">
+              <%= f.label :start_at ,"チェックイン", class: "form-label" %>
+              <%= f.date_field :start_at, class: "form-control" %>
+            </div>
+
+            <div class="col-sm-12 col-md">
+              <%= f.label :end_at ,"チェックアウト", class: "form-label" %>
+              <%= f.date_field :end_at, class: "form-control" %>
+            </div>
+          
+            <div class="col-sm-12 col-md">
+              <%= f.label :num_people ,"人数", class: "form-label" %>
+              <%= f.number_field :num_people, class: "form-control" %>
+            </div> 
+
+            <% if user_signed_in? %>
+              <%= f.hidden_field :user_id, value: user.id %>
+              <%= f.hidden_field :room_id, value: room.id %>
+              <%= f.submit "予約確認", class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to "ログイン", "/users/sign_in", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

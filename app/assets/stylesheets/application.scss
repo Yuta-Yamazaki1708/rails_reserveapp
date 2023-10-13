@@ -1,0 +1,173 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+header{
+    background-color: #212529;
+}
+
+.logo {
+    font-size: 19px;
+}
+
+.logo a {
+    color: white;
+}
+
+.log-in-menu a {
+    color: white;
+    font-size: 10px;
+}
+
+.log-in-menu li {
+    list-style: none;
+}
+
+.drop-down-menu li {
+    width: 125px;
+    list-style: none;
+    position: relative;
+    font-size: 15px;
+}
+
+.drop-down-menu li a {
+    display: block; 
+    border: solid 1px silver;
+    line-height: 40px; 
+    text-decoration: none; 
+    text-align: center; 
+    color: black;
+    background-color: white; 
+}
+
+.drop-down-menu ul {
+    margin: 0px;
+    padding: 0px; 
+    display: none; 
+    position: absolute; 
+ }
+ 
+.user-name {
+   color: white;
+}
+
+#menu {
+    padding: auto 5px;
+}
+
+.first-view {
+    background-image: url("cover-lg.jpg");
+    background-size: cover;
+    height: 600px;
+}
+
+.first-message {
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    margin: 150px 0;
+}
+
+span {
+    font-weight: bolder;
+}
+
+.recommend-area-section {
+    padding: 20px;
+}
+
+.recommend-title {
+    margin: 10px;
+}
+
+.recommend-content {
+    height: 300px;
+    border-radius: 20px;
+    margin: 4px;
+    position: relative;
+}
+
+.tokyo {
+    background-image: url("tokyo.jpg");
+    background-size: cover;
+}
+
+.osaka {
+    background-image: url("osaka.jpg");
+    background-size: cover;
+}
+
+.kyoto {
+    background-image: url("kyoto.jpg");
+    background-size: cover;
+}
+
+.sapporo {
+    background-image: url("sapporo.jpg");
+    background-size: cover;
+}
+
+.area-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.area-name {
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+}
+
+footer {
+    background-color: #212529;
+    height: 500px;
+}
+
+.form-wrapper {
+    padding: 50px 0;
+    background-color: #dfe2e6;
+}
+
+.search-message {
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.bolder {
+    font-weight: bolder;
+}
+
+.sign-wrapper {
+    background-color: #dfe2e6;
+ 
+}
+
+.sign-container {
+    background-color: white;
+    padding: 20px;
+}

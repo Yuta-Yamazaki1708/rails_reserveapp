@@ -12,7 +12,7 @@ class Reservation < ApplicationRecord
     return if end_at.nil? || start_at.nil?
     
     if end_at < start_at
-      errors.add(:end_at, "は開始日以降の日付を選択したください")
+      errors.add(:end_at, "は開始日以降の日付を選択してください")
     end
   end
 end

@@ -1,30 +1,31 @@
-<h3>own</h3>
-<table>
-  <thead>
-    <tr>
-      <th>施設名</th>
-      <th>画像</th>
-      <th>住所</th>
-      <th>紹介</th>
-      <th>価格</th>
-      <th>user_id</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @rooms.each do |room| %>
-      <tr>
-        <td><%= link_to "#{room.name}", room_path(room) %></td>
-        <% if room.image.attached? %>
-        <td><%= image_tag room.image.variant(resize: "100x100") %></td>
+<div class="container">
+  <h3>登録済施設一覧</h3>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">画像</th>
+          <th scope="col">施設名</th>
+          <th scope="col">住所</th>
+          <th scope="col">紹介</th>
+          <th scope="col">価格</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @rooms.each do |room| %>
+          <tr>
+            <% if room.image.attached? %>
+              <td><%= image_tag room.image.variant(resize: "100x100") %></td>
+            <% end %>
+            <td><%= link_to "#{room.name}", room_path(room) %></td>
+            <td><%= room.address %></td>
+            <td><%= room.introduction %></td>
+            <td>￥<%= room.price %>〜</td>
+            <td><%= link_to "編集", edit_room_path(room), class: "btn btn-primary" %></td>
+            <td><%= link_to "削除", room_path(room), method: :delete, class: "btn btn-outline-primary", data: {confirm: "削除確認"} %></td>
+          </tr>
         <% end %>
-        <td><%= room.address %></td>
-        <td><%= room.introduction %></td>
-        <td><%= room.price %></td>
-        <td><%= room.user_id %></td>
-        <td>︙</td>
-        <td><%= link_to "編集", edit_room_path(room) %></td>
-        <td><%= link_to "削除", room_path(room), method: :delete, data: {confirm: "削除確認"} %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,5 +1,33 @@
-<h3>アカウント</h3>
-<%= link_to "プロフィール", user_profile_path %>
-<p><%= current_user.email %></p>
-<%= link_to "編集", edit_user_registration_path %>
+<div class="container-fluid user-account">
+  <h3>設定</h3>
+  <div class="row justify-content_between">
+  
+    <%= render "users/shared/account_tab" %>
 
+    <div class="col-sm-9 ">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">アカウント情報</th>
+            <th scope="col"><%= link_to "編集", edit_user_registration_path %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row justify-content-between">
+              <p class="col-xs-12 col-sm-6">メールアドレス</p>
+              <p class="col-xs-12 col-sm-6"><%= current_user.email %></p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="row justify-content-between">
+              <p class="col-xs-12 col-sm-6">パスワード</p>
+              <p class="col-xs-12 col-sm-6">********</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+  </div>
+</div>

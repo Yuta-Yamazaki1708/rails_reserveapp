@@ -32,6 +32,8 @@ class ReservationsController < ApplicationController
 
   def edit
     @reservation = Reservation.find(params[:id])
+    @user = User.find_by(id: @reservation.user_id)
+    @room = Room.find_by(id: @reservation.room_id)
   end
 
   def update

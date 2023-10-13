@@ -1,31 +1,33 @@
-<h2>検索結果</h2>
-<% count_rooms = @rooms.length %>
-<p><%= count_rooms %>件が見つかりました。</p>
+<div class="form-wrapper">
+  <div class="container-fluid row justify-content-around">
+    <div class="col-sm-12 col-md-6">
+      <%= form_with url: "search", class: "d-grid gap-2", method: :get do |f| %>
+        <%= f.text_field :address, class: "form-control", placeholder: "エリアを入力" %>
+        <%= f.text_field :keyword, class: "form-control", placeholder: "キーワードを入力" %>
+        <%= f.submit "検索", class: "btn btn-primary"%>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>施設名</th>
-      <th>画像</th>
-      <th>住所</th>
-      <th>紹介</th>
-      <th>価格</th>
-      <th>user_id</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @rooms.each do |room| %>
-      <tr>
-        <td><%= room.name %></td>
-        <% if room.image.attached? %>
-        <td><%= image_tag room.image.variant(resize: "100x100") %></td>
-        <% end %>
-        <td><%= room.address %></td>
-        <td><%= room.introduction %></td>
-        <td><%= room.price %></td>
-        <td><%= room.user_id %></td>
-        <td><%= link_to "詳細", room_path(room) %></td>
-      </tr>
+<div class="search-wrapper">
+  <div class="container-fluid row justify-content-between gy-2 gx-10">
+    <% count_rooms = @rooms.length %>
+    <p class="search-message"><span><%= count_rooms %></span>件が見つかりました。</p>
+
+ <% @rooms.each do |room| %>
+  <div class="card col-sm-12 col-md-6 col-lg-3">
+   <% if room.image.attached? %>
+      <%= image_tag room.image, class: "card-img-top", alt: "施設画像" %>
     <% end %>
-  </tbody>
-</table>
+
+    <div class="card-body">
+      <h5 class="card-title"><%= room.name %></h5>
+      <p class="card-text"><%= room.address %></p>
+      <p class="card-text"><%= room.introduction %></p>
+      <p class="card-text">￥<%= room.price %>〜</p>
+      <%= link_to "詳細", room_path(room), class: "btn btn-primary" %>
+    </div>
+  </div>
+ <% end %>
+ 

@@ -1,22 +1,65 @@
-<h3>確認画面</h3>
-<table>
-  <tr>
-  <% sum_price = @reservation.room.price * @reservation.num_people * (@reservation.end_at - @reservation.start_at).to_i %>
-    <th>チェックイン</th>
-    <td><%= @reservation.start_at %></td>
-    <th>チェックアウト</th>
-    <td><%= @reservation.end_at %></td>
-    <th>人数</th>
-    <td><%= @reservation.num_people %></td>
-    <th>合計金額</th>
-    <td><%= sum_price %></td>
-  </tr>
-</table>
-<%= form_with model: @reservation, url: reservations_path, method: :post do |f| %>
-<%= f.hidden_field :start_at, value: @reservation.start_at %>
-<%= f.hidden_field :end_at, value: @reservation.end_at %>
-<%= f.hidden_field :num_people, value: @reservation.num_people %>
-<%= f.hidden_field :user_id, value: @reservation.user_id %>
-<%= f.hidden_field :room_id, value: @reservation.room_id %>
-<%= f.submit "予約完了する" %>
-<% end %>
+<% days = (@reservation.end_at - @reservation.start_at).to_i %>
+<% sum_price = @reservation.room.price * @reservation.num_people * days %>
+
+<div class="container">
+  <h3>予約確認</h3>
+  
+  <div class="row">
+    <div class="col text-start">
+      <p class="bolder">チェックイン</p>
+    </div>
+    <div class="col text-end">
+      <p><%= @reservation.start_at %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-start">
+      <p class="bolder">チェックアウト</p>
+    </div>
+    <div class="col text-end">
+      <p><%= @reservation.end_at %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-start">
+      <p class="bolder">日数</p>
+    </div>
+    <div class="col text-end">
+      <p><%= days %>日</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-start">
+      <p class="bolder">人数</p>
+    </div>
+    <div class="col text-end">
+      <p><%= @reservation.num_people %>人</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-start">
+      <p class="bolder">合計金額</p>
+    </div>
+    <div class="col text-end">
+      <p class="bolder"><%= sum_price %>円</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= form_with model: @reservation, url: reservations_path, method: :post do |f| %>
+    <%= f.hidden_field :start_at, value: @reservation.start_at %>
+    <%= f.hidden_field :end_at, value: @reservation.end_at %>
+    <%= f.hidden_field :num_people, value: @reservation.num_people %>
+    <%= f.hidden_field :user_id, value: @reservation.user_id %>
+    <%= f.hidden_field :room_id, value: @reservation.room_id %>
+    <%= f.submit "予約完了する", class: "btn btn-primary col-12 mb-4" %>
+    <%= link_to "キャンセル", :back,  class: "btn btn-outline-primary col-12 mb-4" %>
+    <% end %>  
+  </div>
+
+
+</div>

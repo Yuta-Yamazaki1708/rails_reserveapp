@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
     @user = current_user
     @room = Room.new(room_params)
     if @room.save
-      redirect_to rooms_path
+      redirect_to rooms_own_path
     else
       render "rooms/new"
     end
@@ -51,11 +51,7 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @rooms = Room.where('address LIKE ?', "%#{params[:address]}%")
-  end
-
-  def search_keywords
-    @rooms = Room.where('address LIKE ? OR introduction LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    @rooms = Room.where('address LIKE ? AND (introduction LIKE ? OR name LIKE ?)', "%#{params[:address]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
   end
 
   private

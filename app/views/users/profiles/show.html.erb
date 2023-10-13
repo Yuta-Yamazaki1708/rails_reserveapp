@@ -1,10 +1,45 @@
-<%= render "users/shared/flash_message", message: flash[:success] %>
+<div class="container-fluid user-account">
+  <h3>設定</h3>
+  <%= render "users/shared/flash_message", message: flash[:success] %>
+  <div class="row justify-content_between">
+    
+    <%= render "users/shared/profile_tab" %>
 
-<%= link_to "アカウント", user_account_path %>
-<h3>プロフィール</h3>
-<p><%= current_user.name %></p>
-<p><%= current_user.introduction %></p>
-<% if current_user.avatar.attached? %>
-  <%= image_tag current_user.avatar.variant(resize: '100x100') %>
-<% end %>
-<%= link_to "編集", user_profile_edit_path %>
+    <div class="col-sm-9 ">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">プロフィール</th>
+            <th scope="col"><%= link_to "編集",  user_profile_edit_path %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row justify-content-between">
+              <p class="col-xs-12 col-sm-6">アイコン画像</p>
+              <div>
+                <% if current_user.avatar.attached? %>
+                  <%= image_tag current_user.avatar.variant(resize: "20x20") %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="row justify-content-between">
+              <p class="col-xs-12 col-sm-6">名前</p>
+              <p class="col-xs-12 col-sm-6"><%= current_user.name %></p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="row justify-content-between">
+              <p class="col-xs-12 col-sm-6">自己紹介</p>
+              <p class="col-xs-12 col-sm-6"><%= current_user.introduction %></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+  </div>
+</div>

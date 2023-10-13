@@ -1,23 +1,35 @@
-<h3>プロフィール編集</h3>
+<div class="container-fluid user-account">
+  <h3>設定</h3>
 
-<%= render "users/shared/flash_now_message", message: flash[:failure] %>
+  <%= render "users/shared/flash_now_message", message: flash[:failure] %>
 
-<%= form_with model: current_user, url: user_profile_path, method: "patch" do |f| %>
-  <table>
-     <tr>
-       <th><%= f.label :name ,"名前" %></th>
-       <td><%= f.text_field :name %></td>
-     </tr>
-     <tr>
-       <th><%= f.label :introduction ,"一言紹介" %></th>
-       <td><%= f.text_area :introduction %></td>
-     </tr>
-     <tr>
-       <th><%= f.label :avatar ,"アバター" %></th>
-       <td><%= f.file_field :avatar %></td>
-     </tr>
-   </table>
- 
-   <%= f.submit "登録完了する"%></li>
+  <div class="row justify-content_between">
     
- <% end %>
+    <%= render "users/shared/profile_tab" %>
+
+    <div class="col-sm-9 ">
+          <%= form_with model: current_user, url: user_profile_path, class: "mb-3", method: "patch" do |f| %>
+            <legend>プロフィール</legend>
+              <div class="mb-3">
+                <%= f.label :avatar ,"アバター", class: "form-label" %>
+                <%= f.file_field :avatar, class: "form-control" %>
+              </div>
+
+              <div class="mb-3">
+                <%= f.label :name ,"名前", class: "form-label" %>
+                <%= f.text_field :name, class: "form-control" %>
+              </div>
+
+              <div class="mb-3">
+                <%= f.label :introduction ,"一言紹介", class: "form-label" %>
+                <%= f.text_area :introduction, class: "form-control" %>
+              </div>
+
+              <div class="mb-3 p-3 row justify-content-end text-center gy-3">
+                <%= link_to "キャンセル", :back, class: "btn btn-outline-primary col-xs-12 col-sm-4" %>
+                <%= f.submit "編集完了する", class: "btn btn-primary col-xs-12 col-sm-4"%>
+              </div>
+            <% end %>
+    </div>
+  </div>
+</div>
