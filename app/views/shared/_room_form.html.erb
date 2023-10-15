@@ -1,0 +1,38 @@
+<% if flash.any? %>
+  <% flash[:error].each do |message| %>
+    <ul>
+      <li><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= form_with model: room do |f| %>
+  <div class="mb-3">
+    <%= f.label :name ,"施設名", class: "form-label" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :address ,"住所", class: "form-label" %>
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :introduction ,"施設詳細", class: "form-label" %>
+    <%= f.text_area :introduction, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :price ,"価格", class: "form-label" %>
+    <%= f.number_field :price, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :image ,"画像", class: "form-label" %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: user.id %>
+
+  <%= f.submit "登録", class: "mb-3 btn btn-primary" %>
+<% end %>

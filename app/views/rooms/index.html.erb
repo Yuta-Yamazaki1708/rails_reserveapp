@@ -1,0 +1,29 @@
+<h1>施設一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>施設名</th>
+      <th>画像</th>
+      <th>住所</th>
+      <th>紹介</th>
+      <th>価格</th>
+      <th>user_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.name %></td>
+        <% if room.image.attached? %>
+        <td><%= image_tag room.image.variant(resize: "100x100"), alt: "施設画像" %></td>
+        <% end %>
+        <td><%= room.address %></td>
+        <td><%= room.introduction %></td>
+        <td><%= room.price %></td>
+        <td><%= room.user_id %></td>
+        <td><%= link_to "詳細", room_path(room) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

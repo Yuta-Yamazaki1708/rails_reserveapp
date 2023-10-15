@@ -1,0 +1,32 @@
+<div class="sign-wrapper row justify-content-center">
+  <div class="sign-container container-fluid col-sm-12 col-md-8 ">
+    <h3 class="text-center">ログイン</h3>
+
+    <div class="sign-form">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      
+      <div class="mb-4">
+        <%= f.label "メールアドレス", class: "form-label" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label "パスワード", class: "form-label" %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      </div>
+
+      <div class="mb-4 gy-2 row justify-content-center">
+        <%= f.submit "ログイン", class: "btn btn-primary col-8" %>
+        <%= link_to "新しいアカウントを作成", new_user_registration_path, class: "btn btn-outline-primary col-8" %>
+      </div>
+
+      <div class="mb-4">
+        
+      </div>
+      
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

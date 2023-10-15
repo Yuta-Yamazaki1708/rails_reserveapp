@@ -1,0 +1,45 @@
+<div class="container-fluid user-account">
+  <h3>設定</h3>
+  <%= render "users/shared/flash_message", message: flash[:success] %>
+  <div class="row justify-content_between">
+    
+    <%= render "users/shared/profile_tab" %>
+
+    <div class="col-sm-9 ">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">プロフィール</th>
+            <th scope="col"><%= link_to "編集",  user_profile_edit_path %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row justify-content-between">
+              <p class="col-xs-12 col-sm-6">アイコン画像</p>
+              <div>
+                <% if @user.avatar.attached? %>
+                  <%= image_tag @user.avatar.variant(resize: "20x20"),alt: "アイコン" %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="row justify-content-between">
+              <p class="col-xs-12 col-sm-6">名前</p>
+              <p class="col-xs-12 col-sm-6"><%= @user.name %></p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="row justify-content-between">
+              <p class="col-xs-12 col-sm-6">自己紹介</p>
+              <p class="col-xs-12 col-sm-6"><%= @user.introduction %></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+  </div>
+</div>

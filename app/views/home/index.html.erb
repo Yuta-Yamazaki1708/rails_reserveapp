@@ -1,0 +1,38 @@
+<div class="first-view">
+  <div class="container-fluid row justify-content-around text-center">
+    <h1 class="first-message">まだ体験したことのない旅をしよう</h1>
+    <div class="first-form col-xs-12 col-sm-9  col-md-6 ">
+      <%= form_with url: "rooms/search", class: "d-grid gap-2", method: :get do |f| %>
+        <%= f.text_field :address, class: "form-control", placeholder: "エリアを入力" %>
+        <%= f.submit "検索", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="recommend-area-section">
+  <div class="contaner-fluid">
+    <h2 class="recommend-title">おすすめエリア</h2>
+    <div class="recommend-areas row justify-content-around ">
+      <div class="recommend-content tokyo col-sm-12 col-md-5 ">
+        <%= link_to "", "/rooms/search?address=%E6%9D%B1%E4%BA%AC&commit=%E6%A4%9C%E7%B4%A2", class: "area-link col-sm-12 col-md-5 " %>
+        <p class="area-name">東京</p>
+      </div>
+
+      <div class="recommend-content osaka col-sm-12 col-md-5 ">
+        <%= link_to "", "/rooms/search?address=%E5%A4%A7%E9%98%AA&commit=%E6%A4%9C%E7%B4%A2", class: "area-link col-sm-12 col-md-5 " %>
+        <p class="area-name">大阪</p>
+      </div>
+
+      <div class="recommend-content kyoto col-sm-12 col-md-5 ">
+        <%= link_to "", "/rooms/search?address=%E4%BA%AC%E9%83%BD&commit=%E6%A4%9C%E7%B4%A2", class: "area-link col-sm-12 col-md-5 " %>
+        <p class="area-name">京都</p>
+      </div>
+
+      <div class="recommend-content sapporo col-sm-12 col-md-5 ">
+        <%= link_to "", "/rooms/search?address=%E6%9C%AD%E5%B9%8C&commit=%E6%A4%9C%E7%B4%A2", class: "area-link col-sm-12 col-md-5 " %>
+        <p class="area-name">札幌</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+
+
+<div class="container-fluid table-responsive">
+  <h2>予約一覧</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">画像</th>
+        <th scope="col">施設名</th>
+        <th scope="col">紹介</th>
+        <th scope="col">合計料金</th>
+        <th scope="col">チェックイン</th>
+        <th scope="col">チェックアウト</th>
+        <th scope="col">予約確定日時</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @reservations.each do |reservation| %>
+    <% sum_price = reservation.room.price * reservation.num_people * (reservation.end_at - reservation.start_at).to_i %>
+      <tr>
+        <td><%= image_tag reservation.room.image.variant(resize:'100x100'), alt: "施設画像" %></td>
+        <td><%= link_to reservation.room.name, room_path(reservation.room_id) %></td>
+        <td><%= reservation.room.introduction %></td>
+        <td><%= number_to_currency(sum_price, delimeter: ",", locale: 'ja') %></td>
+        <td><%= l reservation.start_at %></td>
+        <td><%= l reservation.end_at %></td>
+        <td><%= l reservation.updated_at %></td>
+        <td><%= link_to "再予約", edit_reservation_path(reservation), class: "btn btn-primary" %></td>
+        <td><%= link_to "削除", reservation_path(reservation), method: :delete, data:{confirm: "本当に削除しますか？"}, class: "btn btn-outline-primary" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

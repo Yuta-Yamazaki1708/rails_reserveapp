@@ -1,0 +1,43 @@
+<div class="container-fluid user-account">
+  <h3>設定</h3>
+
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <div class="row justify-content_between">
+    
+    <%= render "users/shared/account_tab" %>
+
+    <div class="col-sm-9 ">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <div class="mb-3">
+                <%= f.label :email ,"メールアドレス", class: "form-label" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              </div>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+
+              <div class="mb-3">
+                <%= f.label :password ,"パスワード", class: "form-label" %>
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+              </div>
+
+              <div class="mb-3">
+                <%= f.label :password_confirmation, "確認用パスワード" , class: "form-label" %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+              </div>
+
+              <div class="mb-3">
+                <%= f.label :current_password, "現在のパスワード" , class: "form-label" %>
+                <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+              </div>
+
+              <div class="mb-3 p-3 row justify-content-end text-center gy-3">
+                <%= link_to "キャンセル", :back, class: "btn btn-outline-primary col-xs-12 col-sm-4" %>
+                <%= f.submit "編集完了する", class: "btn btn-primary col-xs-12 col-sm-4"%>
+              </div>
+            <% end %>
+    </div>
+  </div>
+</div>
