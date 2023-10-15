@@ -67,6 +67,7 @@ header{
     padding: 0px; 
     display: none; 
     position: absolute; 
+    right: 10px;
  }
  
 .user-name {
@@ -180,4 +181,13 @@ footer {
 .alert {
     background-color: red;
     color: white;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu{
+    position: absolute;
+    right: 120px;
 }
