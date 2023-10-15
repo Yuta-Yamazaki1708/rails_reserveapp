@@ -16,7 +16,7 @@
       <tr>
         <td><%= room.name %></td>
         <% if room.image.attached? %>
-        <td><%= image_tag room.image.variant(resize: "100x100") %></td>
+        <td><%= image_tag room.image.variant(resize: "100x100"), alt: "施設画像" %></td>
         <% end %>
         <td><%= room.address %></td>
         <td><%= room.introduction %></td>

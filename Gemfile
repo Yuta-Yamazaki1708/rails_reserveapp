@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pry-rails'
 gem 'devise'
 gem 'rails-i18n'
+gem 'devise-i18n-views'
 gem 'bootstrap', '~> 5.3.0'
 gem 'sassc-rails'
 

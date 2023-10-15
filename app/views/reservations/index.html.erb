@@ -20,8 +20,8 @@
       <% @reservations.each do |reservation| %>
       <% sum_price = reservation.room.price * reservation.num_people * (reservation.end_at - reservation.start_at).to_i %>
         <tr>
-          <td><%= image_tag reservation.room.image.variant(resize:'100x100') %></td>
-          <td><%= reservation.room.name %></td>
+          <td><%= image_tag reservation.room.image.variant(resize:'100x100'), alt: "施設画像" %></td>
+          <td><%= link_to reservation.room.name, room_path(reservation.room_id) %></td>
           <td><%= reservation.room.introduction %></td>
           <td>￥<%= sum_price %></td>
           <td><%= reservation.start_at %></td>

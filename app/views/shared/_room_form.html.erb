@@ -1,5 +1,5 @@
-<% if room.errors.any? %>
-  <% room.errors.full_messages.each do |message| %>
+<% if flash.any? %>
+  <% flash[:error].each do |message| %>
     <ul>
       <li><%= message %></li>
     </ul>

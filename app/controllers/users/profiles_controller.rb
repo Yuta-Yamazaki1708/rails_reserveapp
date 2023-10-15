@@ -12,10 +12,10 @@ class Users::ProfilesController < ActionController::Base
     def update
       @user = current_user
       if @user.update(profile_params)
-        flash[:success] = "編集が完了しました"
+        flash[:notice] = "編集が完了しました"
         redirect_to user_profile_path
       else
-        flash[:failure] = "編集に失敗しました"
+        flash.now[:alert] = "編集に失敗しました"
         render action: :edit
       end
     end

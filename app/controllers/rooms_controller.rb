@@ -13,9 +13,12 @@ class RoomsController < ApplicationController
     @user = current_user
     @room = Room.new(room_params)
     if @room.save
+      flash[:notice] = "登録に成功しました"
       redirect_to rooms_own_path
     else
-      render "rooms/new"
+      flash[:alert] = "登録に失敗しました"
+      flash[:error] = @room.errors.full_messages
+      redirect_to new_room_path
     end
   end
 
@@ -39,15 +42,19 @@ class RoomsController < ApplicationController
     @user = current_user
     @room = Room.find(params[:id])
     if @room.update(room_params)
+      flash[:notice] = "編集に成功しました"
       redirect_to rooms_own_path
     else
-      render "rooms/edit"
+      flash[:error] = @room.errors.full_messages
+      flash[:alert] = "編集に失敗しました"
+      redirect_to edit_room_path(@room)
     end
   end
 
   def destroy
     @room = Room.find(params[:id])
     @room.destroy
+    flash[:notice] = "施設情報の削除が完了しました"
     redirect_to rooms_own_path
   end
 

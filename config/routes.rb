@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/rooms/own', to: 'rooms#own'
   get '/rooms/search', to: 'rooms#search'
   resources :rooms
-  get 'reservations/confirm', to: 'reservations#confirm'
+  post 'reservation/confirm', to: 'reservations#confirm'
   resources :reservations
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

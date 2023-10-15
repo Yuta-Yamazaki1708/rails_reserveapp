@@ -19,7 +19,7 @@
               <p class="col-xs-12 col-sm-6">アイコン画像</p>
               <div>
                 <% if @user.avatar.attached? %>
-                  <%= image_tag @user.avatar.variant(resize: "20x20") %>
+                  <%= image_tag @user.avatar.variant(resize: "20x20"),alt: "アイコン" %>
                 <% end %>
               </div>
             </td>

@@ -1,6 +1,5 @@
 <% days = (@reservation.end_at - @reservation.start_at).to_i %>
 <% sum_price = @reservation.room.price * @reservation.num_people * days %>
-
 <div class="container">
   <h3>予約確認</h3>
   

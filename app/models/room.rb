@@ -13,6 +13,6 @@ class Room < ApplicationRecord
     def price_plus?
         return if price.nil?
 
-        errors.add(:price, "は１円以上にしてください") if price <= 1 
+        errors.add(:price, "は１円以上にしてください") if price < 1 
     end
 end
