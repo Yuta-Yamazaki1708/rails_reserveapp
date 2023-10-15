@@ -8,7 +8,7 @@
     <%= render "users/shared/profile_tab" %>
 
     <div class="col-sm-9 ">
-          <%= form_with model: current_user, url: user_profile_path, class: "mb-3", method: "patch" do |f| %>
+          <%= form_with model: @user, url: user_profile_path, class: "mb-3", method: "patch" do |f| %>
             <legend>プロフィール</legend>
               <div class="mb-3">
                 <%= f.label :avatar ,"アバター", class: "form-label" %>
@@ -21,7 +21,7 @@
               </div>
 
               <div class="mb-3">
-                <%= f.label :introduction ,"一言紹介", class: "form-label" %>
+                <%= f.label :introduction ,"自己紹介", class: "form-label" %>
                 <%= f.text_area :introduction, class: "form-control" %>
               </div>
 

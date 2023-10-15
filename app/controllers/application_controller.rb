@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_sign_up_params, if: :devise_controller?
   before_action :configure_account_update_params, if: :devise_controller?
-  after_action :default_avatar, if: :devise_controller?, only: [:create]
+ 
 
   
   protected
@@ -15,9 +15,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :introduction, :avater])
   end
 
-  def default_avatar
-      if !current_user.avatar.attached?
-        current_user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_avatar.png')), filename: 'default-avatar.png', content_type: 'image/png')
-      end
-    end
 end

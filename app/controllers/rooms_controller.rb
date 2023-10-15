@@ -36,6 +36,7 @@ class RoomsController < ApplicationController
   end
 
   def update
+    @user = current_user
     @room = Room.find(params[:id])
     if @room.update(room_params)
       redirect_to rooms_own_path

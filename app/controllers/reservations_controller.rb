@@ -10,11 +10,12 @@ class ReservationsController < ApplicationController
 
   def confirm
     @user = current_user
-    @reservation = Reservation.new(reservation_params)
-    @room = Room.find(reservation_params.require(:room_id))
-    if @reservation.invalid?
-      render "rooms/show"
+    if params[:reservation].present?
+      @reservation = Reservation.new(reservation_params)
+    else
+      return redirect_to :root
     end
+    @room = Room.find(reservation_params.require(:room_id))
   end
 
   def create
@@ -27,7 +28,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
-   
+
   end
 
   def edit

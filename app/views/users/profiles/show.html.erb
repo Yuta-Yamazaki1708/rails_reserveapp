@@ -18,8 +18,8 @@
             <td class="row justify-content-between">
               <p class="col-xs-12 col-sm-6">アイコン画像</p>
               <div>
-                <% if current_user.avatar.attached? %>
-                  <%= image_tag current_user.avatar.variant(resize: "20x20") %>
+                <% if @user.avatar.attached? %>
+                  <%= image_tag @user.avatar.variant(resize: "20x20") %>
                 <% end %>
               </div>
             </td>
@@ -28,14 +28,14 @@
           <tr>
             <td class="row justify-content-between">
               <p class="col-xs-12 col-sm-6">名前</p>
-              <p class="col-xs-12 col-sm-6"><%= current_user.name %></p>
+              <p class="col-xs-12 col-sm-6"><%= @user.name %></p>
             </td>
           </tr>
 
           <tr>
             <td class="row justify-content-between">
               <p class="col-xs-12 col-sm-6">自己紹介</p>
-              <p class="col-xs-12 col-sm-6"><%= current_user.introduction %></p>
+              <p class="col-xs-12 col-sm-6"><%= @user.introduction %></p>
             </td>
           </tr>
         </tbody>

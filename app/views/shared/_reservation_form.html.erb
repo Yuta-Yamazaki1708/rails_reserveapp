@@ -23,7 +23,7 @@
       <p><%= room.address %></p>
       <p><%= room.introduction %></p>
       <div class="reservation-form">
-        <%= form_with model: reservation, url: reservations_confirm_path, method: :post do |f| %>
+        <%= form_with model: reservation, url: reservations_confirm_path, method: :get do |f| %>
           <div class="row justify-content-between text-center gy-4">
             <div class="col-sm-12 col-md">
               <%= f.label :start_at ,"チェックイン", class: "form-label" %>

@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_many :rooms, through: :reservations
   has_many :rooms, dependent: :destroy
   
+  validates :name, :email, presence: true
+  validates :password, presence: true, on: :create
+
 end
