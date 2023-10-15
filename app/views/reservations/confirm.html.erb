@@ -44,7 +44,7 @@
       <p class="bolder">合計金額</p>
     </div>
     <div class="col text-end">
-      <p class="bolder"><%= sum_price %>円</p>
+      <p class="bolder"><%= number_to_currency(sum_price, delimeter: ",", locale: 'ja') %></p>
     </div>
   </div>
 

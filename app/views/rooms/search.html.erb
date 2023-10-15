@@ -25,7 +25,7 @@
       <h5 class="card-title"><%= room.name %></h5>
       <p class="card-text"><%= room.address %></p>
       <p class="card-text"><%= room.introduction %></p>
-      <p class="card-text">￥<%= room.price %>〜</p>
+      <p class="card-text"><%= number_to_currency(room.price, delimeter: ",", locale: 'ja') %>〜</p>
       <%= link_to "詳細", room_path(room), class: "btn btn-primary" %>
     </div>
   </div>

@@ -23,10 +23,10 @@
           <td><%= image_tag reservation.room.image.variant(resize:'100x100'), alt: "施設画像" %></td>
           <td><%= link_to reservation.room.name, room_path(reservation.room_id) %></td>
           <td><%= reservation.room.introduction %></td>
-          <td>￥<%= sum_price %></td>
-          <td><%= reservation.start_at %></td>
-          <td><%= reservation.end_at %></td>
-          <td><%= reservation.updated_at %></td>
+          <td><%= number_to_currency(sum_price, delimeter: ",", locale: 'ja') %></td>
+          <td><%= l reservation.start_at %></td>
+          <td><%= l reservation.end_at %></td>
+          <td><%= l reservation.updated_at %></td>
           <td><%= link_to "再予約", edit_reservation_path(reservation), class: "btn btn-primary" %></td>
           <td><%= link_to "削除", reservation_path(reservation), method: :delete, data:{confirm: "本当に削除しますか？"}, class: "btn btn-outline-primary" %></td>
         </tr>

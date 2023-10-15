@@ -19,7 +19,7 @@
     <%= image_tag room.image.variant(resize: "500x500"), alt: "施設画像", class: "reservation-image col" %>
     <div class="reservation-information col row justify-content-between">
       <p class="col text-start"><%= room.name %></p>
-      <p class="col text-end">￥<%= room.price %>〜</p>
+      <p class="col text-end"><%= number_to_currency(room.price, delimeter: ",", locale: 'ja') %>〜</p>
       <p><%= room.address %></p>
       <p><%= room.introduction %></p>
       <div class="reservation-form">

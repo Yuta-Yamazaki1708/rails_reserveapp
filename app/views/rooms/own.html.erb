@@ -21,8 +21,8 @@
             <td><%= link_to "#{room.name}", room_path(room) %></td>
             <td><%= room.address %></td>
             <td><%= room.introduction %></td>
-            <td>￥<%= room.price %>〜</td>
-            <td><%= room.created_at %></td>
+            <td><%= number_to_currency(room.price, delimeter: ",", locale: 'ja') %>〜</td>
+            <td><%= l room.created_at, format: :short %></td>
             <td><%= link_to "編集", edit_room_path(room), class: "btn btn-primary" %></td>
             <td><%= link_to "削除", room_path(room), method: :delete, class: "btn btn-outline-primary", data: {confirm: "削除確認"} %></td>
           </tr>

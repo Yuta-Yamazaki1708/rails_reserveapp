@@ -22,3 +22,14 @@ ja:
         start_at: 開始日
         end_at: 終了日
         num_people: 人数
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      short: "%Y/%m/%d"
+  number:
+    currency:
+      format:
+        unit: "￥"
+        format: "%u%n"
+        negative_format: "-%n%u"
+        precision: 0
